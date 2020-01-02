@@ -29,7 +29,7 @@ class CreateBudbeeOrdersTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('budbee_orders');
+		Schema::dropIfExists('budbee_orders');
 	}
 
 }

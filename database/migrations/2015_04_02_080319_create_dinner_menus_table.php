@@ -33,7 +33,7 @@ class CreateDinnerMenusTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('dinner_menus');
+		Schema::dropIfExists('dinner_menus');
 	}
 
 }

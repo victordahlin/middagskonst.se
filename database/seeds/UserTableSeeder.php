@@ -1,27 +1,28 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Model;
-use App\User;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class UserTableSeeder extends Seeder
 {
+    /**
+     * Seed the application's database.
+     *
+     * @return void
+     */
     public function run()
     {
-        Model::unguard();
-
-        User::create([
+        DB::table('users')->insert([
             'name' => 'Test',
-            'email' => '',
-            'password' => Hash::make('test12345'),
-            'city' => '',
-            'street'  => '',
-            'doorCode'  => '',
-            'postalCode'  => '',
-            'telephoneNumber'  => '',
-            'additionalInfo'  => '',
-            'telephoneNumberDriver'  => '',
+            'email' => 'test@test.com',
+            'password' => bcrypt('test12345'),
+            'city' => 'Test',
+            'street'  => 'Test 1',
+            'doorCode'  => '123456',
+            'postalCode'  => '123456',
+            'telephoneNumber'  => '07012345678',
+            'telephoneNumberDriver'  => '07012345678',
+            'additionalInfo'  => 'Test',            
             'interval'  => 'eachWeek',
             'startDate'  => '2015-04-16',
             'skipDate'  => '',
@@ -34,6 +35,7 @@ class UserTableSeeder extends Seeder
             'dinnerProductAmount'  => '1',
             'dinnerProductPrice'  => '720',
             'payexID'  => '',
+            'payed' => false,
             'active'  => '1',
             'role'  => 'User']);
     }

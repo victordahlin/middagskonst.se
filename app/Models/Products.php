@@ -1,11 +1,13 @@
-<?php namespace App;
+<?php
+
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Products extends Model
 {
     protected $table = 'products';
-    protected $fillable = ['title', 'dinners', 'persons', 'longText', 'summaryText','addonsText','text','img','price', 'discount', 'type', 'reference'];
+    protected $fillable = ['title', 'dinners', 'persons', 'longText', 'summaryText', 'addonsText', 'text', 'img', 'price', 'discount', 'type', 'reference'];
     public $timestamps = false;
 
     /**
@@ -14,7 +16,7 @@ class Products extends Model
      */
     public static function getDinners()
     {
-        return Products::orderBy('title')->having('type','=','bags')->get();
+        return Products::orderBy('title')->having('type', '=', 'bags')->get();
     }
 
     /**

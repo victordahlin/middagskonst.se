@@ -1,5 +1,6 @@
 @extends('layouts.default')
 @section('content')
+
 <div class="startpage row">
   <div class="col-md-12 start">
     <div class="text col-xs-12 col-md-6">

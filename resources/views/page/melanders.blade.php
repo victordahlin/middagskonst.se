@@ -1,5 +1,6 @@
 @extends('layouts.default')
 @section('content')
+
 {!! Form::open(array(
   'url' => '/bli-kund',
   'class' => 'form-horizontal')) !!}

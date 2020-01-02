@@ -28,7 +28,7 @@ class CreateDinnerBagsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('dinner_bags');
+		Schema::dropIfExists('dinner_bags');
 	}
 
 }

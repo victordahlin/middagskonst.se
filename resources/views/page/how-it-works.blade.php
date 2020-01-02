@@ -1,5 +1,6 @@
 @extends('layouts.default')
 @section('content')
+
 <div class="container-fluid">
   <div class="col-md-12 col-xs-12">
     <div class="h3">

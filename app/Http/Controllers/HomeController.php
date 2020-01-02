@@ -15,12 +15,12 @@ class HomeController extends Controller
     public function index()
     {
         $products = \App\Products::getDinners();
-        $extra = \App\Products::getExtra();
+        // $extra = \App\Products::getExtra();
         $startPageText = StartPage::all();
 
         return view('page.home')
             ->with('products', $products)
-            ->with('extraProducts', $extra)
+            // ->with('extraProducts', $extra)
             ->with('startPageText',$startPageText);
     }
 

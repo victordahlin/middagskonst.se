@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration {
             $table->string('name', 32);
             $table->string('email', 320);
             $table->string('password', 64);
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('city', 64);
             $table->string('street', 64);
             $table->string('doorCode', 64);
@@ -53,7 +54,7 @@ class CreateUsersTable extends Migration {
 	 */
 	public function down()
 	{
-        Schema::drop('users');
+        Schema::dropIfExists('users');
 	}
 
 }

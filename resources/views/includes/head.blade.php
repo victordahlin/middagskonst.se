@@ -2,7 +2,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="author" content="Melanders Middagspåsar">
 <title>Middagskonst</title>
-<link rel="shortcut icon" type="image/png" href="{{ asset('img/favicon.ico') }}">
+<link rel="shortcut icon" type="image/png" href="{{ asset('favicon.ico') }}">
 <meta http-equiv="Content-type" value="text/html; charset=UTF-8" />
 <link rel='start' href='http://middagskonst.se/'>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">

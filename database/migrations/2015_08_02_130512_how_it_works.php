@@ -23,6 +23,6 @@ class HowItWorks extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('how_it_works');
+		Schema::dropIfExists('how_it_works');
 	}
 }

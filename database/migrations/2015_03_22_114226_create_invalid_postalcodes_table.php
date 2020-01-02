@@ -28,7 +28,7 @@ class CreateInvalidPostalcodesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('invalid_postalcodes');
+		Schema::dropIfExists('invalid_postalcodes');
 	}
 
 }

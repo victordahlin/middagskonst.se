@@ -28,7 +28,7 @@ class Startpage extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('startpage');
+		Schema::dropIfExists('startpage');
 	}
 
 }

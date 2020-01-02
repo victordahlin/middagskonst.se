@@ -26,7 +26,7 @@
         <div class="col-md-4">
           <div class="h3">Kontakt</div>
           <div>
-            Telefon: 072-74 27 127<br>
+            Telefon: 070 - 12 34 567<br>
             Email:
             <a href="mailto:info@middagskonst.se">
               info@middagskonst.se
