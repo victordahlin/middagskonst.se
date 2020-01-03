@@ -38,9 +38,9 @@ Route::post('logga-in', ['uses' => 'UserController@doLogin']);
 // Create customer pages
 Route::post('bli-kund', 'OrderController@customerInformation');
 Route::get('bli-kund', 'HomeController@getBags');
-Route::get('bli-kund/betala', 'PayexController@createAgreement3');
-Route::post('bli-kund/betala', 'OrderController@validateForm');
-Route::get('bli-kund/complete', 'PayexController@complete');
+// Route::get('bli-kund/betala', 'PayexController@createAgreement3');
+// Route::post('bli-kund/betala', 'OrderController@validateForm');
+// Route::get('bli-kund/complete', 'PayexController@complete');
 
 /*********************************************
  *    CRON JOBS

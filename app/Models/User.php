@@ -96,17 +96,17 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public static function getPDF($user)
     {
-        $path = str_replace('laravel_files', '', base_path()); // Remove name 'laravel_files' from public link
-        $dir = $path . "invoice/".$user->id.'/';
-        $files = scandir($dir);
-        $showFiles = [];
+        // $path = str_replace('laravel_files', '', base_path()); // Remove name 'laravel_files' from public link
+        // $dir = $path . "invoice/".$user->id.'/';
+        // $files = scandir($dir);
+        $showFiles = array();
 
-        foreach($files as $file)
-        {
-            if($file != '.' && $file != '..'){
-                array_push($showFiles, $file);
-            }
-        }
+        // foreach($files as $file)
+        // {
+        //     if($file != '.' && $file != '..'){
+        //         array_push($showFiles, $file);
+        //     }
+        // }
         return $showFiles;
     }
 
@@ -207,9 +207,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public static function getCurrentDay($fiveWeeks)
     {
-        $currentTime = \App\User::getTime();
-        $diff = abs(strtotime($fiveWeeks[0]) - strtotime($currentTime));
-        return floor($diff / (60 * 60 * 24));
+        // $currentTime = \App\User::getTime();
+        // $diff = abs(strtotime($fiveWeeks[0]) - strtotime($currentTime));
+        // return floor($diff / (60 * 60 * 24));
+        return 0;
     }
 
     /**

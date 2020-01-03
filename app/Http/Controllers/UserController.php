@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Auth;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Input;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -45,16 +45,16 @@ class UserController extends Controller
 
 
         // run the validator rules on the input from the form
-        $validator = Validator::make(Input::all(), $rules, $messages);
+        $validator = Validator::make(Request::all(), $rules, $messages);
 
         // if validator fails, redirect to the form
         if ($validator->fails()) {
-            Input::flash();
+            Request::flash();
             return redirect('/logga-in')
                 ->withErrors($validator);
         } else {
             // attempt to do the login
-            if (Auth::attempt(['email' => Input::get('email'), 'password' => Input::get('password')])) {
+            if (Auth::attempt(['email' => Request::input('email'), 'password' => Request::input('password')])) {
                 $admin = Auth::user()->role;
 
                 if ($admin == 'Administrator') {

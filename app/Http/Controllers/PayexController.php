@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use SoapClient;
 use SoapFault;
 use SimpleXMLElement;
-use Illuminate\Support\Facades\Input;
+use Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -529,10 +529,10 @@ class PayexController extends Controller
             $orderID = \App\Order::createOrder($user->id);
 
             // Get price and products to pay for
-            $extraProductsInput = Input::get('extra');
-            $extraProductPriceInput = strip_tags(Input::get('extraProductPriceInput'));
-            $currentBagAmount = (int)strip_tags(Input::get('currentBagAmount'));
-            $currentBagID = strip_tags(Input::get('currentBagID'));
+            $extraProductsInput = Request::input('extra');
+            $extraProductPriceInput = strip_tags(Request::input('extraProductPriceInput'));
+            $currentBagAmount = (int)strip_tags(Request::input('currentBagAmount'));
+            $currentBagID = strip_tags(Request::input('currentBagID'));
 
             $extraProductsString = implode(', ', $extraProductsInput) . ', ' . $currentBagID;
             $totalPriceExtra = $extraProductPriceInput * 100;

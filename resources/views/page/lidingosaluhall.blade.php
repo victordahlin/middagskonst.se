@@ -1,33 +1,29 @@
 @extends('layouts.default')
 @section('content')
-{!! Form::open(array(
-  'url' => '/bli-kund',
-  'class' => 'form-horizontal')) !!}
-  {!! Form::hidden('option','','') !!}
-  {!!  Form::close() !!}
-  <div class="container-fluid">
-    <div class="col-md-12 col-xs-12">
-      {!! Html::image('img/lidingosaluhall.png', '',
-      ['width' => '225px',
-      'height' => '226px',
-      'border' => '0',
-      'alt' => 'Lindingösaluhall']) !!}
-      <div class="row">
-        <div class="products">
-          <div class="col-xs-12">
-            <br>
-            <p>
-              {!! $dinnerBags[2]->text !!}
-            </p>
-            <br>
-            <br>
-          </div>
-          @for($i = 0; $i < sizeof($products); $i++)
-          @if(strpos($products[$i]->title,'saluhalls')!==false)
+
+<div class="container-fluid">
+  <div class="col-md-12 col-xs-12">
+    {!! Html::image('img/lidingosaluhall.png', '',
+    ['width' => '225px',
+    'height' => '226px',
+    'border' => '0',
+    'alt' => 'Lindingösaluhall']) !!}
+    <div class="row">
+      <div class="products">
+        <div class="col-xs-12">
+          <br>
+          <p>
+            {!! $dinnerBags[2]->text !!}
+          </p>
+          <br>
+          <br>
+        </div>
+        @for($i = 0; $i < sizeof($products); $i++) @if(strpos($products[$i]->title,'saluhalls')!==false)
           <a href="javascript:void(0)" class="menu">
             {!! Form::hidden('',$i,'') !!}
             <div class="col-xs-12 col-sm-6" id="stora-matkassen">
-              <div class="col-xs-12 product"> <!-- product -->
+              <div class="col-xs-12 product">
+                <!-- product -->
                 <header class="row visible-sm">
                   <div class="h3">
                     <center>
@@ -53,7 +49,7 @@
                       <div class="col-xs-10 col-xs-push-1">
                         <span>
                           <b>{{ $products[$i]->price }} KR</b>
-                          <br/><i>inkl frakt</i>
+                          <br /><i>inkl frakt</i>
                         </span>
                       </div>
                     </div>
@@ -80,8 +76,7 @@
           <div class="col-xs-12">
             <div class="h3"><b>Veckomenyer</b></div>
             <hr>
-            @for($i = 0; $i < sizeof($menus); $i+=2)
-            <div class="row">
+            @for($i = 0; $i < sizeof($menus); $i+=2) <div class="row">
               <div class="col-lg-12">
                 <div class="h4">Vecka {{ $menus[$i]->week }}</div>
               </div>
@@ -107,13 +102,13 @@
                 @endif
                 @endforeach
               </div>
-            </div>
-            @endfor
-            <br><br><br>
           </div>
-        </div>
-        <!-- /products -->
+          @endfor
+          <br><br><br>
       </div>
     </div>
+    <!-- /products -->
   </div>
-  @stop
+</div>
+</div>
+@stop

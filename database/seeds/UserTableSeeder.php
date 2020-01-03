@@ -12,6 +12,9 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
+        $today = new DateTime();
+        
+
         DB::table('users')->insert([
             'name' => 'Test',
             'email' => 'test@test.com',
@@ -24,7 +27,7 @@ class UserTableSeeder extends Seeder
             'telephoneNumberDriver'  => '07012345678',
             'additionalInfo'  => 'Test',            
             'interval'  => 'eachWeek',
-            'startDate'  => '2015-04-16',
+            'startDate'  => $today->format('Y-m-d'),
             'skipDate'  => '',
             'extraProductCurrent'  => '0, 0, 0',
             'extraProductNext'  => '0, 0, 0',

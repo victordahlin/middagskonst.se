@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
             ProductsTableSeeder::class,
             StartPageTableSeeder::class,
             HowItWorksTableSeeder::class,
-            DinnerBagsTableSeeder::class
+            DinnerBagsTableSeeder::class,
+            DinnerMenusTableSeeder::class,
         ]);
     }
 }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Input;
+use Request;
 
 class DashboardController extends Controller {
 
@@ -27,20 +27,20 @@ class DashboardController extends Controller {
 	 */
 	public function create()
 	{
-        $starterFirst = Input::get('starter1');
-        $mainFirst = Input::get('main1');
-        $dessertFirst = Input::get('dessert1');
-        $firstWeek = Input::get('week1');
+        $starterFirst = Request::input('starter1');
+        $mainFirst = Request::input('main1');
+        $dessertFirst = Request::input('dessert1');
+        $firstWeek = Request::input('week1');
 
-        $starterSecond = Input::get('starter3');
-        $mainSecond = Input::get('main3');
-        $dessertSecond = Input::get('dessert3');
-        $secondWeek = Input::get('week2');
+        $starterSecond = Request::input('starter3');
+        $mainSecond = Request::input('main3');
+        $dessertSecond = Request::input('dessert3');
+        $secondWeek = Request::input('week2');
 
-        $starterThird = Input::get('starter3');
-        $mainThird = Input::get('main3');
-        $dessertThird = Input::get('dessert3');
-        $thirdWeek = Input::get('week3');
+        $starterThird = Request::input('starter3');
+        $mainThird = Request::input('main3');
+        $dessertThird = Request::input('dessert3');
+        $thirdWeek = Request::input('week3');
 
         $firstFridayBag = \App\DinnerMenu::find(1);
         $secondFridayBag = \App\DinnerMenu::find(3);

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Input;
+use Request;
 use Illuminate\Support\Facades\Validator;
 
 class OrderController extends Controller
@@ -31,7 +31,7 @@ class OrderController extends Controller
      */
     public function customerInformation()
     {
-        $this->option = Input::get('option');
+        $this->option = Request::input('option');
 
 
         if(!is_null($this->option))
@@ -61,7 +61,7 @@ class OrderController extends Controller
      */
     public function validateForm()
     {
-        $id = strip_tags(Input::get('dinnerProduct'));
+        $id = strip_tags(Request::input('dinnerProduct'));
 
         if(!is_null($id))
         {
@@ -73,15 +73,15 @@ class OrderController extends Controller
                 'fiveWeeks' => $this->fiveWeeks
             );
 
-            $email = strip_tags(Input::get('email'));
-            $emailConfirm = strip_tags(Input::get('emailConfirm'));
-            $password = strip_tags(Input::get('password'));
-            $passwordConfirm = strip_tags(Input::get('passwordConfirm'));
+            $email = strip_tags(Request::input('email'));
+            $emailConfirm = strip_tags(Request::input('emailConfirm'));
+            $password = strip_tags(Request::input('password'));
+            $passwordConfirm = strip_tags(Request::input('passwordConfirm'));
             $texts = \App\HowItWorks::all();
 
             if(strcmp($email, $emailConfirm) != 0)
             {
-                Input::flash();
+                Request::flash();
                 return view('page.customer')
                     ->with('data', $data)
                     ->with('texts', $texts)
@@ -89,7 +89,7 @@ class OrderController extends Controller
             }
             else if(strcmp($password, $passwordConfirm) != 0)
             {
-                Input::flash();
+                Request::flash();
                 return view('page.customer')
                     ->with('data', $data)
                     ->with('texts', $texts)
@@ -98,12 +98,12 @@ class OrderController extends Controller
             else
             {
                 //  Examine user credentials from form
-                $validator = Validator::make(Input::all(), \App\User::$rules, \App\User::$messages);
+                $validator = Validator::make(Request::all(), \App\User::$rules, \App\User::$messages);
 
                 // Redirect to form with errors
                 if($validator->fails())
                 {
-                    Input::flash();
+                    Request::flash();
                     return view('page.customer')
                         ->with('data', $data)
                         ->with('texts', $texts)
@@ -116,7 +116,7 @@ class OrderController extends Controller
                     $responseCity = \App\BudbeeOrders::checkCity();
 
                     if($responseCity === false){
-                        Input::flash();
+                        Request::flash();
                         return view('page.customer')
                             ->with('data', $data)
                             ->with('texts', $texts)
@@ -125,7 +125,7 @@ class OrderController extends Controller
 
                     $response = \App\BudbeeOrders::checkPostalCode();
                     if($response === false){
-                        Input::flash();
+                        Request::flash();
                         return view('page.customer')
                             ->with('data', $data)
                             ->with('texts', $texts)
@@ -146,7 +146,7 @@ class OrderController extends Controller
      */
     public function createUser()
     {
-        $user = \App\User::createUser(Input::all());
+        $user = \App\User::createUser(Request::all());
 
         $path = str_replace('laravel_files', '', base_path()).'invoice/'; // Remove name 'laravel_files' from public link
 
@@ -169,10 +169,10 @@ class OrderController extends Controller
     public function getSummary()
     {
         if(Auth::user()->interval != 'off'){
-            $extraProductInput = Input::get('extra');
-            $currentBagAmount = (int)strip_tags(Input::get('currentBagAmount'));
+            $extraProductInput = Request::input('extra');
+            $currentBagAmount = (int)strip_tags(Request::input('currentBagAmount'));
             $totalExtraProducts = 0;
-            $currentBag = strip_tags(Input::get('currentBag'));
+            $currentBag = strip_tags(Request::input('currentBag'));
 
             // Maximum amount of extra products
             if((int)$currentBagAmount>5 || (int)$extraProductInput[0]>5 || (int)$extraProductInput[1]>5 ||(int)$extraProductInput[1]>5){
@@ -195,7 +195,7 @@ class OrderController extends Controller
                     ->withErrors('Du har inte valt några produkter ännu.');
             } else {
                 return view('addons.summary')
-                    ->with('data', Input::all())
+                    ->with('data', Request::all())
                     ->with('extraProductsDB', $this->extraProducts)
                     ->with('dinnerProductDB', $dinnerProduct);
             }

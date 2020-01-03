@@ -133,7 +133,7 @@ class BudbeeOrders extends Model
      */
     public static function checkCity()
     {
-        $userCity = mb_strtolower(Input::get('city'), 'UTF-8');
+        $userCity = mb_strtolower(Request::input('city'), 'UTF-8');
 
         if (!empty($userCity)) {
             if (in_array($userCity, BudbeeOrders::$locality)) {
@@ -174,7 +174,7 @@ class BudbeeOrders extends Model
      */
     public static function checkPostalCode()
     {
-        $userPostal = Input::get('postalCode');
+        $userPostal = Request::input('postalCode');
 
         // Only NUMBERS
         $postalCodeNumbers = preg_replace('/[^0-9]/', '', $userPostal);

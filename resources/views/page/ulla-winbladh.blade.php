@@ -1,33 +1,29 @@
 @extends('layouts.default')
 @section('content')
-{!! Form::open(array(
-  'url' => '/bli-kund',
-  'class' => 'form-horizontal')) !!}
-  {!! Form::hidden('option','','') !!}
-  {!!  Form::close() !!}
-  <div class="container-fluid">
-    <div class="col-md-12 col-xs-12">
-      {!! Html::image('img/ulla_winbladh.jpg', '',[
-      'width' => '206px',
-      'height' => '59px',
-      'border' => '0',
-      'alt' => 'Ulla Winbladh']) !!}
-      <div class="row">
-        <div class="products">
-          <div class="col-xs-12">
-            <br>
-            <p>
-              {!! $dinnerBags[1]->text !!}
-            </p>
-            <br>
-            <br>
-          </div>
-          @for($i = 0; $i < sizeof($products); $i++)
-          @if(strpos($products[$i]->title,'Winbladhs')!==false)
+
+<div class="container-fluid">
+  <div class="col-md-12 col-xs-12">
+    {!! Html::image('img/ulla_winbladh.jpg', '',[
+    'width' => '206px',
+    'height' => '59px',
+    'border' => '0',
+    'alt' => 'Ulla Winbladh']) !!}
+    <div class="row">
+      <div class="products">
+        <div class="col-xs-12">
+          <br>
+          <p>
+            {!! $dinnerBags[1]->text !!}
+          </p>
+          <br>
+          <br>
+        </div>
+        @for($i = 0; $i < sizeof($products); $i++) @if(strpos($products[$i]->title,'Winbladhs')!==false)
           <a href="javascript:void(0)" class="menu">
             {!! Form::hidden('',$i,'') !!}
             <div class="col-xs-12 col-sm-5 col-sm-offset-3" id="stora-matkassen">
-              <div class="col-xs-12 product"> <!-- product -->
+              <div class="col-xs-12 product">
+                <!-- product -->
                 <header class="row visible-sm">
                   <div class="h2">
                     <center>
@@ -53,7 +49,7 @@
                       <div class="col-xs-10 col-xs-push-1">
                         <span>
                           <b>{{ $products[$i]->price }} KR</b>
-                          <br/><i>inkl frakt</i>
+                          <br /><i>inkl frakt</i>
                         </span>
                       </div>
                     </div>
@@ -104,9 +100,9 @@
             </div>
             <br><br><br>
           </div>
-        </div>
-        <!-- /products -->
       </div>
+      <!-- /products -->
     </div>
   </div>
-  @stop
+</div>
+@stop
